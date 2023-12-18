@@ -490,6 +490,15 @@ span {
     .certificates-container {
         grid-template-columns: 1fr;
     }
+    
+    .footer {
+        flex-direction: column-reverse;
+    }
+
+    .footer p {
+        text-align: center;
+        margin-top: 2rem;
+    }
 } 
 
 @media screen and (max-width: 450px) {
@@ -509,14 +518,5 @@ span {
 
     .about-img img {
         width: 90vw;
-    }
-
-    .footer {
-        flex-direction: column-reverse;
-    }
-
-    .footer p {
-        text-align: center;
-        margin-top: 2rem;
     }
 } 
