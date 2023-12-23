@@ -147,6 +147,7 @@ span {
     display: inline-flex;
     padding: 1rem 2.8rem;
     background: var(--main-color);
+    border: 0.2rem solid var(--main-color);
     border-radius: 4rem;
     box-shadow: 0 0 1rem var(--main-color);
     font-size: 1.6rem;
