@@ -383,6 +383,10 @@ span {
     cursor: pointer;
 }
 
+.contact form .btn:hover {
+    color: var(--bg-color);
+}
+
 #hidden {
     color: var(--bg-color);
     text-decoration: line-through;
