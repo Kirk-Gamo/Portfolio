@@ -52,10 +52,15 @@ section {
 }
 
 .logo {
+    position: relative;
     font-size: 2.5rem;
     color: var(--text-color);
     font-weight: 600;
     cursor: default;
+}
+
+.navbar {
+    position: relative;
 }
 
 .navbar a {
@@ -70,6 +75,7 @@ section {
 }
 
 #menu-icon {
+    position: relative;
     font-size: 3.6rem;
     color: var(--text-color);
     display: none;
@@ -224,6 +230,68 @@ span {
     margin: 2rem 0 3rem;
 }
 
+.about1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    background: var(--second-bg-color);
+    padding-bottom: 6rem;
+}
+
+.about1 .about-img {
+    position: relative;
+    width: 25rem;
+    height: 25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.about1 .about-img img {
+    width: 90%;
+    border-radius: 50%;
+    border: 0.2rem solid var(--main-color);
+}
+
+.about-img .circle-spin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border-top: 0.2rem solid var(--second-bg-color);
+    border-bottom: 0.2rem solid var(--second-bg-color);
+    border-left: 0.2rem solid var(--main-color);
+    border-right: 0.2rem solid var(--main-color);
+    animation: aboutSpinner 8s linear infinite;
+}
+
+@keyframes aboutSpinner {
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.about1 .about-content {
+    text-align: center;
+}
+
+.about1 .about-content p {
+    text-indent: 4rem;
+    position: relative;
+    left: 15%;
+    width: 70%;
+    text-align: justify;
+}
+
+strong, em {
+    color: var(--main-color);
+}
 .education {
     display: flex;
     justify-content: center;
@@ -621,6 +689,28 @@ span {
     color: var(--second-bg-color);
 }
 
+/* ANIMATION RELOAD AND SCROLL */
+.animate {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    z-index: 98;
+}
+
+.logo .animate, .navbar .animate, #menu-icon .animate {
+    animation: showRight 1s ease forwards;
+    animation-delay: calc(0.3s * var(--i));
+}
+
+@keyframes showRight {
+    100% {
+        width: 0;
+    }
+}
+
 
 /* BREAKPOINTS */
 @media screen and (max-width: 1200px){
@@ -677,7 +767,7 @@ span {
         flex-direction: column-reverse;
     }
 
-    .about-img img {
+    .about .about-img img {
         width: 70vw;
         margin-top: 4rem;
     }
@@ -693,6 +783,12 @@ span {
     .certificates-container {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .about1 .about-content p {
+        width: 100%;
+        left: 0;
+        padding: 0 3rem 0;
+    }
 }
 
 @media screen and (max-width: 704px) {
@@ -703,24 +799,54 @@ span {
     .navbar {
         position: absolute;
         top: 100%;
-        left: 0;
+        left: -100%;
         width: 100%;
         padding: 1rem 3%;
-        background: var(--bg-color);
+        background: var(--second-bg-color);
         border-top: 0.1rem solid rgba(0, 0, 0, 0.2);
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-        display: none;
+        z-index: 1;
+        transition: 0.25s ease;
+        transition-delay: 0.25s;
     }
 
     .navbar.active {
-        display: block;
+        left: 0;
+        transition-delay: 0s;
+    }
+
+    .navbar .active-nav {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: var(--bg-color);
+        border-top: 0.1rem solid rgba(0, 0, 0, 0.2);
+        z-index: -1;
+        transition: 0.25s ease;
+        transition-delay: 0s;
+    }
+
+    .navbar.active .active-nav {
+        left: 0;
+        transition-delay: 0.25s;
     }
 
     .navbar a {
         display: block;
         font-size: 2rem;
         margin: 3rem 0;
+        transform: translateX(-20rem);
+        transition: 0.25 ease;
+        transition-delay: 0;
     }
+    
+    .navbar.active a {
+        transform: translateX(0);
+        transition-delay: 0.25s;
+    }
+
 }
 
 @media screen and (max-width: 588px) {
