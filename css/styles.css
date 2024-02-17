@@ -82,6 +82,7 @@ section {
 }
 
 .home {
+    background-image: url(https://wallpapercave.com/wp/wp9256245.jpg);
     display: flex;
     justify-content: center;
     align-items: center;
